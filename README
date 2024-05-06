@@ -3,7 +3,7 @@ How to build:
 The project has TBB and OpenMP as dependencies, but I believe any Linux installation
 should have these available by default.
 
-Build the project using CMake. Simply running `cmake -DCMAKE_BUILD_TYPE=Release -Bbuild .`
+Build the project using CMake. Simply running `cmake -DCMAKE_BUILD_TYPE=Release -Bbuild .` followed by `make`
 in the project's root directory should suffice to produce the binaries within build/ .
 
 How to run:
