@@ -1,0 +1,21 @@
+How to build:
+
+The project has TBB and OpenMP as dependencies, but I believe any Linux installation
+should have these available by default.
+
+Build the project using CMake. Simply running `cmake -DCMAKE_BUILD_TYPE=Release -Bbuild .`
+in the project's root directory should suffice to produce the binaries within build/ .
+
+How to run:
+
+Make sure to decompress mnist_train.tar.gz into working directory you will run `train` in.
+
+Then, just run said program. Ctrl + C to quit, stop training and produce "parameters.dat"
+at any time. You can also send SIGUSR1 to the process if you know its PID. This will
+produce parameters.dat, but the program will keep on running.
+
+To generate samples from the produced parameters.dat, simply run reconstruct. It will produce
+a file called output.bmp .
+
+BEWARE!!!! Both programs will overwrite their corresponding output files when run again, so
+make sure to back up any important results before doing so!
