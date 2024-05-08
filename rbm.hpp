@@ -96,9 +96,8 @@ void AlternatingGibbsSingleStep(std::span<bool, V> visibleState, std::span<bool,
 {
     std::random_device rd;
 
-    auto hiddenStateEnumerated = hiddenState | std::views::enumerate;
 #pragma omp parallel for
-    for (auto&& [j, value] : hiddenStateEnumerated)
+    for (auto&& [j, value] : hiddenState | std::views::enumerate)
     {
         float sumVWs{0};
         for (std::size_t i = 0; i < V; ++i)
@@ -108,9 +107,8 @@ void AlternatingGibbsSingleStep(std::span<bool, V> visibleState, std::span<bool,
         value = (std::uniform_real_distribution{}(rd) < sigmoid(rbm.hiddenBiases[j] + sumVWs));
     }
 
-    auto visibleStateEnumerated = visibleState | std::views::enumerate;
 #pragma omp parallel for
-    for (auto&& [i, value] : visibleStateEnumerated)
+    for (auto&& [i, value] : visibleState | std::views::enumerate)
     {
         float sumWHs{0};
         for (std::size_t j = 0; j < H; ++j)
